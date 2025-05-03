@@ -13,7 +13,7 @@ export const createCourse = async (req, res) => {
 // Get all courses
 export const getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find().populate('relevantCourses');
+    const courses = await Course.find();
     res.status(200).json(courses);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -23,7 +23,7 @@ export const getAllCourses = async (req, res) => {
 // Get a single course by ID
 export const getCourseById = async (req, res) => {
   try {
-    const course = await Course.findById(req.params.id).populate('relevantCourses');
+    const course = await Course.findById(req.params.id);
     if (!course) return res.status(404).json({ message: 'Course not found' });
     res.status(200).json(course);
   } catch (err) {
@@ -111,7 +111,7 @@ export const getCoursesByTag = async (req, res) => {
     }
   
     try {
-      const courses = await Course.find({ tags: { $in: [tag] } }).populate('relevantCourses');
+      const courses = await Course.find({ tags: { $in: [tag] } });
       res.status(200).json(courses);
     } catch (err) {
       res.status(500).json({ error: err.message });
