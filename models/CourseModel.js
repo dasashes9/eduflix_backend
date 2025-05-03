@@ -14,8 +14,8 @@ const courseSchema = new mongoose.Schema({
   thumbnail: { type: String, required: true },
   description: { type: String, required: true },
   tags: [{ type: String }],
-  likeCount:{type: Number},
-  viewCount:{type: Number},
+  likeCount:{type: Number , default: 0},
+  viewCount:{type: Number , default: 0},
   videos: [videoSchema]
 });
 
