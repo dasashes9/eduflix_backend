@@ -44,6 +44,7 @@ const userSchema = new mongoose.Schema({
   nextLevelXp: { type: Number, default: 1000 },
   currentStreak: { type: Number, default: 0 },
   longestStreak: { type: Number, default: 0 },
+  lastStreakUpdate: { type: Date },
 
 
   // Course completion metrics
@@ -68,7 +69,7 @@ const userSchema = new mongoose.Schema({
   enrolledCourses: [enrolledCourseSchema],
   achievements: [
     {
-      
+      id: Number,
       title: String,
       description: String,
       progress: Number,
